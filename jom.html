@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Editorial Cartooning</title>
+
+    <!-- Google Fonts for Calligraphy Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            padding: 0;
+        }
+
+        /* Header Section */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Logo Styles */
+        #logo {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5em;
+            color: #fff; /* White color */
+            z-index: 1000;
+            cursor: pointer;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+            color: #ffcc00;
+        }
+
+        /* Search Bar */
+        #searchBar {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            max-width: 300px;
+            width: 100%;
+        }
+
+        /* Main Section */
+        main {
+            padding: 40px 20px;
+        }
+
+        /* Category Sections */
+        section {
+            position: relative;
+            margin-bottom: 40px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #e2e2e2;
+            overflow: hidden;
+        }
+
+        /* Specific Section Backgrounds */
+        #definition {
+            background-color: #dcdcdc;
+        }
+        #history {
+            background-color: #f1f1f1;
+        }
+        #examples {
+            background-color: #e5e5e5;
+        }
+        #how {
+            background-color: #d3d3d3;
+        }
+
+        /* Hover effect to blur the background */
+        section:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Hover effect: Apply blur and background image when mouse enters section */
+        section:hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('your-image-path.jpg');
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px);
+            z-index: -1;
+        }
+
+        /* Section Title and Paragraphs */
+        section h2 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            color: #444;
+        }
+
+        section p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+            color: #555;
+        }
+
+        /* Timeline Section */
+        #timeline {
+            margin-top: 40px;
+        }
+
+        #timeline ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        #timeline ul li {
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #ffcc00;
+        }
+
+        #timeline ul li h3 {
+            font-size: 1.8em;
+            color: #444;
+        }
+
+        /* Contact Form */
+        #contact {
+            margin-top: 40px;
+            padding: 30px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        #contact h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        #contact form {
+            display: grid;
+            grid-gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        #contact input, #contact textarea {
+            padding: 10px;
+            font-size: 1.1em;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        #contact button {
+            padding: 15px;
+            font-size: 1.1em;
+            background-color: #ffcc00;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        #contact button:hover {
+            background-color: #ffaa00;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            nav ul {
+                text-align: center;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 10px 0;
+            }
+
+            #searchBar {
+                width: 80%;
+                top: 10px;
+                right: 10px;
+            }
+
+            section h2 {
+                font-size: 2em;
+            }
+
+            #contact form {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <!-- Logo at the Top Left -->
+        <div id="logo" onclick="scrollToFirstSlide()">JOM</div>
+        <h1>Editorial Cartooning</h1>
+        <nav>
+            <ul>
+                <li><a href="#definition">What is it?</a></li>
+                <li><a href="#history">History</a></li>
+                <li><a href="#examples">Examples</a></li>
+                <li><a href="#how">How to Create</a></li>
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Search Bar at the Top Right -->
+        <input type="text" id="searchBar" placeholder="Search for words..." onkeyup="searchText()">
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <!-- Definition Section -->
+        <section id="definition">
+            <h2>What is an Editorial Cartoon?</h2>
+            <p>An editorial cartoon is a form of visual commentary that combines humor, satire, and social or political commentary. It’s typically created by a cartoonist or illustrator who aims to express opinions about current events, social issues, or political situations in a way that is visually engaging, often using exaggerated depictions and caricatures of public figures.</p>
+        </section>
+
+        <!-- History Section -->
+        <section id="history">
+            <h2>History of Editorial Cartoons</h2>
+            <p>Editorial cartoons have a rich history, dating back to the 18th century. The earliest known political cartoons were created by artists like James Gillray and George Cruikshank in England. These artists used satire to comment on social and political issues of the time. Over the years, editorial cartoons became a powerful tool for conveying complex ideas in a simple, often humorous, and sometimes controversial way.</p>
+        </section>
+
+        <!-- Examples Section -->
+        <section id="examples">
+            <h2>Famous Examples of Editorial Cartoons</h2>
+            <p>Some of the most famous editorial cartoons include those created by artists like Thomas Nast, who is credited with creating the image of the Republican Party elephant. Another iconic cartoonist, Herbert Block (Herblock), created numerous political cartoons, including the famous depictions of Joseph McCarthy during the McCarthy hearings. Editorial cartoons often draw on well-known political figures and events to make a statement.</p>
+        </section>
+
+        <!-- How to Create Section -->
+        <section id="how">
+            <h2>How to Create an Editorial Cartoon</h2>
+            <p>Creating an editorial cartoon involves a combination of artistic skill and social commentary. The first step is to choose a topic or issue. Next, the cartoonist will create a caricature or exaggerated version of the subject matter, using humor or satire to express an opinion or critique. A strong editorial cartoon will simplify a complex issue, making it easily understood by the audience while delivering a punchy message.</p>
+        </section>
+
+        <!-- Timeline Section -->
+        <section id="timeline">
+            <h2>Timeline of Editorial Cartooning</h2>
+            <ul>
+                <li>
+                    <h3>1700s</h3>
+                    <p>The first known political cartoons were created in England, primarily as satirical works in newspapers.</p>
+                </li>
+                <li>
+                    <h3>1840s</h3>
+                    <p>Thomas Nast becomes one of the most influential political cartoonists in America, popularizing symbols like the donkey and elephant for political parties.</p>
+                </li>
+                <li>
+                    <h3>1900s</h3>
+                    <p>Editorial cartoons become a prominent feature in newspapers, addressing issues ranging from social reforms to international politics.</p>
+                </li>
+                <li>
+                    <h3>2000s</h3>
+                    <p>The rise of the internet allows editorial cartoons to spread quickly across social media platforms, gaining new levels of reach and influence.</p>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <form action="mailto:your-email@example.com" method="POST" enctype="multipart/form-data">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; Editorial Cartooning by BSIS BATCH 1. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Search Functionality
+        function searchText() {
+            let input = document.getElementById('searchBar').value.toLowerCase();
+            let sections = document.querySelectorAll('section');
+            let firstMatch = null;
+
+            let highlights = document.querySelectorAll('.highlight');
+            highlights.forEach(function(highlight) {
+                highlight.classList.remove('highlight');
+            });
+
+            sections.forEach(function(section) {
+                let paragraphs = section.querySelectorAll('p');
+                
+                paragraphs.forEach(function(p) {
+                    let text = p.innerText.toLowerCase();
+
+                    if (text.includes(input) && input.trim() !== "") {
+                        let regex = new RegExp(input, "gi");
+
+                        p.innerHTML = p.innerHTML.replace(regex, function(match) {
+                            return '<span class="highlight">' + match + '</span>';
+                        });
+
+                        if (!firstMatch) {
+                            firstMatch = p;
+                        }
+                    }
+                });
+            });
+
+            if (firstMatch) {
+                firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        // Scroll to the first section (slide)
+        function scrollToFirstSlide() {
+            const firstSlide = document.getElementById('definition'); // Assuming 'definition' is the 1st section
+            firstSlide.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
